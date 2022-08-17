@@ -9,10 +9,24 @@ spec:
     repoURL: https://github.com/bucrogers/k8s-argocd.git
     targetRevision: HEAD
     path: kustomize-guestbook
+
+    # kustomize specific config
+    kustomize:
+      # Optional kustomize version. Note: version must be configured in argocd-cm ConfigMap
+      #version:
+      # Supported kustomize transformers. https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/
+      namePrefix: prod-
+      #nameSuffix: -some-suffix
+      commonLabels:
+        Team: sre
+      #commonAnnotations:
+        #beep: boop
+      #images:
+      #- gcr.io/heptio-images/ks-guestbook-demo:0.2
+
   destination:
     server: https://kubernetes.default.svc
     namespace: guestbook
-
 
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
