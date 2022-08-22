@@ -1,0 +1,23 @@
+# common
+- op: replace
+  path: /metadata/name
+  value: guestbook
+
+# deployment
+- op: replace
+  path: /spec/selector/matchLabels/app
+  value: guestbook
+
+- op: replace
+  path: /spec/template/metadata/labels/app
+  value: guestbook
+
+- op: replace
+  path: /spec/template/spec/containers/0/name
+  value: guestbook
+
+# service
+- op: replace
+  path: /spec/selector/app
+  value: guestbook
+

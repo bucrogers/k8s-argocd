@@ -1,0 +1,16 @@
+resources:
+- deployment.yaml
+- svc.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+patchesStrategicMerge:
+- deployment.yaml
+- svc.yaml
+patches:
+  - target:
+      kind: Deployment
+    path: patch.yaml
+  - target:
+      kind: Service
+    path: patch.yaml

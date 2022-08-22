@@ -1,20 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook-ui
+  name: placeholder
 spec:
   replicas: 2
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: guestbook-ui
+      app: placeholder
   template:
     metadata:
       labels:
-        app: guestbook-ui
+        app: placeholder
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
-        name: guestbook-ui
+      - name: placeholder
+        image: placeholder
         ports:
         - containerPort: 80
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
